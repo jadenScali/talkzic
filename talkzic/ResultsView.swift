@@ -162,6 +162,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            badwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if exCategory.contains(word) {
@@ -175,6 +176,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            badwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if emoCategory.contains(word) {
@@ -188,6 +190,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            badwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if jellyCategory.contains(word) {
@@ -201,6 +204,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            badwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if niceCategory.contains(word) {
@@ -214,6 +218,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            goodwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if supportiveCategory.contains(word) {
@@ -227,6 +232,7 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            goodwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if familyCategory.contains(word) {
@@ -240,10 +246,11 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            goodwords += 1
                             currentFlagPairs += [categoryPair]
                         }
                     } else if communicationCategory.contains(word) {
-                        let categoryPair = flagPair(flagCategory: "Being supportive", flagDescrioption: "In any relationship, communication is key. At the forefront of good communication is good listening skills. The fact that your partner is kindly listening to you and responding empathetically means that they are willing to put in the emotional work to maintain a healthy, long term relationship with you.", flagIsRed: false)
+                        let categoryPair = flagPair(flagCategory: "Good Communication", flagDescrioption: "In any relationship, communication is key. At the forefront of good communication is good listening skills. The fact that your partner is kindly listening to you and responding empathetically means that they are willing to put in the emotional work to maintain a healthy, long term relationship with you.", flagIsRed: false)
                         
                         var isAlreadyInArray = false
                         
@@ -253,24 +260,23 @@ struct ResultsView: View {
                             }
                         }
                         if !isAlreadyInArray {
+                            goodwords += 1
                             currentFlagPairs += [categoryPair]
                         }
-                    }
-                    
-                    if redFlagkeyWords.contains(word) {
-                        badwords += 1
-                    } else if greenFlagkeyWords.contains(word) {
-                        goodwords += 1
                     }
                 }
                 
                 if ilyCount >= 3 {
                     let categoryPair = flagPair(flagCategory: "Love-bombing", flagDescrioption: "A form of manipulation in relationships is “love-bombing”, which is when a partner showers you with affection, declarations of love, and talk about your future, only to pull away and leave you with a broken-heart, This type of manipulation is popular with narcissists.", flagIsRed: true)
                     
+                    badwords += 1
                     currentFlagPairs += [categoryPair]
                 }
                 
                 toxicRating = (badwords - goodwords) + 3
+                print("b wrds\(badwords)")
+                print("g wrds\(goodwords)")
+                print("tRating\(toxicRating)")
                 
                 var toxicLevel = 0
                 

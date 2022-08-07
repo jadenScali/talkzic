@@ -19,6 +19,7 @@ struct TranssciptView: View {
                     .foregroundColor(Color("orange"))
                     .padding()
                 ScrollView {
+                    //change bac to transsciprt
                     Text(transcript)
                         .font(.largeTitle)
                         .padding()
